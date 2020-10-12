@@ -1,0 +1,2 @@
+- dcdir: "/var/www/html"
+- httpdport: 8123

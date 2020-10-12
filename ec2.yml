@@ -1,0 +1,22 @@
+- hosts: localhost
+  vars_files:
+  - credentials.yml
+  tasks:
+  - name: provisioning ec2 webserver
+    ec2:
+      instance_tags:
+        Name: Webserver
+      aws_access_key: "{{ access }}"
+      aws_secret_key: "{{ secret }}"
+      region: "ap-south-1"
+      key_name: "aws-key"
+      count: 1
+      instance_type: "t2.micro"
+      image: "ami-052c08d70def0ac62"
+      vpc_subnet_id: "subnet-2710194f"
+      group_id: "sg-095251a12324a6ec1"
+      assign_public_ip: yes
+      state: present
+      wait: yes
+    register: X
+
